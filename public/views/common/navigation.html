@@ -23,12 +23,11 @@
                     H+
                 </div>
             </li>
-	     <li ui-sref-active="active">
-                <a ui-sref="dashboard.start"><i class="fa fa-home"></i> <span class="nav-label">{{ 'Home' | translate }}</span></a>
+	     <li><a ui-sref="login" ng-click="sync()">Sincronizar con AirBnB</a></li>
+	     <li ng-repeat="module in me.modules" ui-sref-active="active">
+                <a ui-sref="{{module.route}}"><i class="fa fa-home"></i> <span class="nav-label">{{ module.name | translate }}</span></a>
             </li>
-	    <li ui-sref-active="active">
-                <a ui-sref="app.houses"><i class="fa fa-home"></i> <span class="nav-label">{{ 'Casas' | translate }}</span></a>
-            </li>
+	
            <!--
             <li ng-class="{active: $state.includes('dashboards')}">
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'Home' | translate }}</span> <span class="fa arrow"></span></a>

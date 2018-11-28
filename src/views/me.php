@@ -10,7 +10,9 @@ $app->get('/api/me', function (Request $request, Response $response, array $args
 		$user = User::getById($session->id);
 		return json_encode(array(
 		"name"=> $user->getName()." ".$user->getLastName(),
-		"modules"=> $user->getModules()));
+		"modules"=> $user->getModules(),
+		"houses"=> $user->getHouses(),
+		));
 	}
 	else
 		return $response->withStatus(403)->withHeader('Content-type','application/json');

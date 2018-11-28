@@ -176,5 +176,10 @@ class User
 		$res = Conex::_query("SELECT name, route FROM Modules INNER JOIN Rol_Modules ON Rol_Modules.module_id = Modules.id WHERE Rol_Modules.rol_id=:rol_id ",array(":rol_id"=>$this->rol_id));
 		return $res;
 	}
+	public function getHouses():array
+	{
+		$res = Conex::_query("SELECT house_id, name FROM Houses INNER JOIN HousesUsers ON Houses.id=HousesUsers.house_id WHERE HousesUsers.user_id = :user_id",array(":user_id"=>$this->id));
+		return $res;
+	}
 }
 ?>

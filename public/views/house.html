@@ -1,0 +1,155 @@
+<div ng-controller="houseCtrl as h">
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>C</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>Casas</a>
+            </li>
+            <li class="active">
+                <strong>{{house.name}}</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn" >
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tabs-container">
+
+                <uib-tabset>
+                    <uib-tab heading="Entradas">
+                        <div class="panel-body">
+                             <div class="ibox-title">
+                <h5>Recuento de entradas</h5>
+
+
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="earning in house.earnings">
+                            <td></td>
+                            <td>{{earning.start_date}}</td>
+                            <td>{{earning.earnings}} MXN</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Salidas">
+                        <div class="panel-body">
+                           <div class="ibox-title">
+                <h5>Recuento de salidas</h5>
+
+
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+
+                            <th>Fecha</th>
+                            <th>Concepto</th>
+                            <th>Costo</th>
+			    <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in house.outgoings">
+                            <td><input id="d{{row.id}}" type="date" ng-value="row.ddate" ng-model="dates[row.id]" ></td>
+	                    <td><input id="c{{row.id}}" type="text" ng-value="row.concept"  ng-model="concepts[row.id]"></td>
+                            <td><input id="o{{row.id}}" type="number" min=0 ng-value="row.outgoing"  ng-model="outgoings[row.id]"> MXN  <button class="mr-3" ng-click="update(row.id)">Guardar</button></td>
+			    <td><button ng-click="del(row.id)">Eliminar</button></td>
+                        </tr>
+			<tr ng-controller="outGoingCtrl">
+			
+                            <td><input type="date" ng-model="date"> </td>
+	                    <td><input type="text" ng-model="concept"> </td>
+                            <td><input type="number" ng-model="outgoing"> </td>
+			   <td><button ng-click="add()">Agregar</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+                        </div>
+                    </uib-tab>
+			<uib-tab heading="Gráficas">
+                        <div class="panel-body">
+				 <div class="row" ng-controller="flotChartCtrl as charts">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Ingresos vs Egresos </h5>
+
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="flot-chart">
+                        <div flot class="flot-chart-content" dataset="charts.flotMultiData" options="charts.flotMultiOptions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Ingresos vs Egresos </h5>
+
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="flot-chart">
+                        <div flot class="flot-chart-content" dataset="charts.flotMultiData2" options="charts.flotMultiOptions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+			 </div>
+                     </uib-tab>
+                </uib-tabset>
+
+            </div>
+        </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+</div>
